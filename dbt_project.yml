@@ -1,0 +1,26 @@
+name: 'app_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'app_dbt'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  app_dbt:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+
+seeds:
+  app_dbt:
+    +schema: raw

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_vendas
+    description: Camada de staging da seed de vendas — tipos normalizados e valor total calculado por pedido.
+    columns:
+      - name: order_id
+        description: Identificador do pedido.
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: Situação do pedido.
+        tests:
+          - accepted_values:
+              values: ['completed', 'cancelled', 'pending']
+      - name: total_value
+        description: quantity * unit_price.
+        tests:
+          - not_null

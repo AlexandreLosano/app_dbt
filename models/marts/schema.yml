@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: fct_vendas_diarias
+    description: Receita e volume de pedidos concluídos, agregados por dia e categoria.
+    columns:
+      - name: order_date
+        tests:
+          - not_null
+      - name: category
+        tests:
+          - not_null
+      - name: total_revenue
+        tests:
+          - not_null
